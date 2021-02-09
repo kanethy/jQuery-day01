@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+ </head>
+ <body>
+	<h1>操作元素的内容和值</h1>
+	<form action="">
+		用户名:<input name="uname">
+					<span></span><br>
+		密码:<input type="password" name="upwd">
+					<span></span><br>
+		<input type="submit" value="提交注册信息">
+	</form>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+    //正确时，使用图片:"<img src='img/ok.png'>"
+    //姓名错误时: "<img src='img/err.png'>用户名必须介于3~9位之间!"
+    //密码错误时: "<img src='img/err.png'>密码必须介于6~8位之间!"
+    //DOM 4步
+		//1. 查找触发事件的元素
+		//本例中: 文本框失去焦点时，触发验证和变化
+		$(":text")
+		//2. 绑定事件处理函数
+		//本例中: 失去焦点触发变化
+		.blur(function(){
+			//为了防止再使用原生DOM属性和方法，一开始就把this包装一下
+			var $this=$(this);
+			//3. 查找要修改的元素
+			//本例中: 修改当前文本框旁边的span元素
+			var $span=$this.next();//.nextElementSibling找的是下一个元素对象！所以返回结果也是一个包含找到的元素对象的jquery对象
+			//4. 修改元素
+			//获得当前文本框的内容
+			var value=$this.val();//.value -> 字符串
+			//如果验证当前文本框的内容通过
+			if(value.length>=3&&value.length<=9){
+				//则修改span的内容为<img src='img/ok.png'>
+				$span.html(`<img src='img/ok.png'>`);
+			}else{//否则如果验证文本框的内容不通过
+				//则修改span的内容为<img src='img/err.png'>用户名必须介于3~9位之间!
+				$span.html(`<img src='img/err.png'>用户名必须介于3~9位之间!`)
+			}
+		})
+	</script>
+ </body>
+</html>

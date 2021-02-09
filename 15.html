@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">click me(0)</button>
+    <button id="btn2">click me(0)</button>
+    <button id="btn3">click me(0)</button>
+
+    <h3>子元素过滤选择器.</h3>
+    <ul>
+        <li>child1-basic0</li>
+        <li>child2-basic1</li>
+        <li>child3-basic2</li>
+    </ul>
+    <ul>
+        <li>child1-basic3</li>
+        <li>child2-basic4</li>
+        <li>child3-basic5</li>
+    </ul>
+    <ul>
+        <li>child1-basic6</li>
+    </ul>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+       var $btns=$("button");
+       $btns.click(function(){
+           var $this=$(this);
+           var n=parseInt($this.html().slice(9,-1));
+           n++;
+           $this.html(`click me(${n})`);
+       })
+
+    //    $("ul>li:first-child").css("border","1px solid red");
+    //    $("ul>li:last-child").css("color","red");   
+    //    $("ul>li:nth-child(2n)").css("box-shadow","0 0 5px green"); 
+    //    $("ul>li:nth-child(2)").css("padding","10px 0");
+    //    $("ul>li:only-child").css("background-color","orange");
+        $("li:first").css("border","1px solid red");
+        $("li:last").css("color","red");
+        $("li:odd").css("box-shadow","0 0 5px green");
+        $("li:eq(1)").css("background-color","orange");
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <button id="btn1">click me(0)</button>
+  <script>
+    //DOM 4步: 
+    //1. 查找触发事件的元素
+    //本例中: 用户点id为btn1的按钮触发变化
+    var btn1=document.getElementById("btn1");
+    //2. 绑定事件处理函数
+    //本例中: 用户单击按钮触发变化
+    btn1.onclick=function(){
+      //3. 查找要修改的元素
+      //本例中: 就是要修改当前按钮自己，所以不用找
+      //就是this->btn1
+      //4. 修改元素
+      //本例中: 修改元素的内容,3步
+      //4.1 取出旧内容
+      //本例中: 取出按钮的内容，并截取()内的数字，转为整数
+      var n=parseInt(this.innerHTML.slice(9,-1));
+      //4.2 计算新值: 本例中: n++
+      n++;
+      //4.3 将新值放元素内容中
+      //本例中: 将新值n，拼接上原来完整的字符串，再放回按钮内容中
+      this.innerHTML=`click me(${n})`;
+    }
+  </script>
+</body>
+</html>

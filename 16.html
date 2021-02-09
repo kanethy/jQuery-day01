@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <style>
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            padding: 5px 10px;
+            border: 1px solid #555;
+            float: left;
+        }
+        /* ul>li:first-child{
+            border-radius: 3px 0 0 3px;
+        }
+        ul>li:last-child{
+            border-radius: 0 3px 3px 0;
+        }
+        ul>li+li{
+            border-left: 0;
+        } */
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <br>
+    <hr>
+    <br>
+    <h1>jQuery中的选择器——内容过滤选择器</h1>
+
+    <button>提交订单</button>
+    <button>Submit注册信息</button>
+    <button>马上提交</button>
+    <button>清空重填</button>
+
+    <hr/>
+    <div class="alert" id="alert1"></div>
+    <div class="alert" id="alert2">
+        <span class="close">×</span>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $("ul>li:first").css("border-radius","3px 0 0 3px");
+        $("ul>li:last").css("border-radius","0 3px 3px 0");
+        $("ul>li:gt(0)").css("border-left",0);
+
+        $("button:contains(提交)").css("background-color","lightGreen");
+        $(".alert:has(.close)").css("background-color","pink");
+        $(".alert:not(:has(.close))").css("background-color","lightGreen");
+        $(".alert:empty").css("box-shadow","0 0 5px red");
+        $(".alert:parent").css("box-shadow","0 0 5px lightGreen");
+
+    </script>
+</body>
+</html>
